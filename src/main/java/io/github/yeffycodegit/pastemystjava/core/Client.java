@@ -1,4 +1,4 @@
-package io.github.yeffycodegit.pastemyst4j.core;
+package io.github.yeffycodegit.pastemystjava.core;
 
 import java.io.BufferedReader;
 import java.io.IOException;

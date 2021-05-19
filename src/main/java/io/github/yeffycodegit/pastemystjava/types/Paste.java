@@ -1,4 +1,4 @@
-package io.github.yeffycodegit.pastemyst4j.types;
+package io.github.yeffycodegit.pastemystjava.types;
 
 // Paste class to represent pastes
 public class Paste {

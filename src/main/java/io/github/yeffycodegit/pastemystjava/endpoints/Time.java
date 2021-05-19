@@ -1,6 +1,6 @@
-package io.github.yeffycodegit.pastemyst4j.endpoints;
+package io.github.yeffycodegit.pastemystjava.endpoints;
 
 // Class to implement functionality for the time endpoint
-public class Paste {
+public class Time {
     // to be implemented
 }

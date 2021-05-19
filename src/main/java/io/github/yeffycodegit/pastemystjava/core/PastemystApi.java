@@ -1,4 +1,4 @@
-package io.github.yeffycodegit.pastemyst4j.core;
+package io.github.yeffycodegit.pastemystjava.core;
 
 /**
  * This class stores data about the Pastemyst Api, like endpoints, the version, etc.

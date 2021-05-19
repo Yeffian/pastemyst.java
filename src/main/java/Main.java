@@ -1,5 +1,4 @@
-import io.github.yeffycodegit.pastemyst4j.core.Client;
-import io.github.yeffycodegit.pastemyst4j.core.PastemystApi;
+import io.github.yeffycodegit.pastemystjava.core.Client;
 
 public class Main {
     public static void main(String[] args) {
