@@ -5,16 +5,26 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
+import java.net.http.HttpResponse;
+import java.util.HashMap;
 
 /**
- * This class implements functionality for performing different requests on the API, and is used by the rest of the library to implement its functionality.
+ * Implements functionality for performing different requests on the API, and is used by the rest of the library to implement its functionality.
  *
  * @author YeffyCodeGit
  * @version 1.0.0
  **/
 public class Client {
-    private static HttpURLConnection connection;
+    private static HttpClient client;
+
+    public Client() {
+        client = HttpClient.newHttpClient();
+    }
 
     /**
     * Performs a GET request on a given endpoint.
@@ -22,73 +32,66 @@ public class Client {
     * @param endpoint The endpoint to send the request to.
     * @return {@code String} containing the result of the performed request.
     * @throws IOException
+    * @throws InterruptedException
     **/
-    public String get(String endpoint) throws IOException {
-        BufferedReader reader;
-        String line;
-        StringBuffer responseContents = new StringBuffer();
+    public String get(String endpoint) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(endpoint))
+                .build();
 
-        URL url = new URL(endpoint);
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        connection.setConnectTimeout(5000);
-        connection.setReadTimeout(5000);
-
-       int status = connection.getResponseCode();
-
-       if (status > 299) {
-           reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
-       } else {
-           reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-       }
-
-       while((line = reader.readLine()) != null) {
-            responseContents.append(line);
-       }
-
-        reader.close();
-
-        return responseContents.toString();
+        return response.body();
     }
 
     /**
      * Performs a POST request on a given endpoint, and posts the given data.
      *
      * @param endpoint The endpoint to send the request to.
-     * @param data The data to post to the endpoint.
+     * @param body The data to post to the endpoint.
      * @throws IOException
+     * @throws InterruptedException
      **/
-    public void post(String endpoint, String data) throws Exception {
-        BufferedReader reader;
-        String line;
-        StringBuffer responseContents = new StringBuffer();
+    public void post(String endpoint, String body) throws InterruptedException, IOException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(endpoint))
+                .POST(HttpRequest.BodyPublishers.ofString(body))
+                .build();
 
-        URL url = new URL(endpoint);
+        client.send(request, BodyHandlers.discarding());
+    }
 
-        connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setConnectTimeout(5000);
-        connection.setReadTimeout(5000);
+    /**
+     * Performs a DELETE request on a given endpoint.
+     *
+     * @param endpoint The endpoint to send the request to.
+     * @throws IOException
+     * @throws InterruptedException
+     **/
+    public void delete(String endpoint) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(endpoint))
+                .DELETE()
+                .build();
 
-        connection.setRequestProperty("Content-Type", "application/json; utf-8");
-        connection.setRequestProperty("Accept", "application/json");
+        client.send(request, BodyHandlers.ofString());
+    }
 
-        connection.setDoOutput(true);
+    /**
+     * Performs a PATCH request on a given endpoint and sends the given data.
+     *
+     * @param endpoint The endpoint to send the request to.
+     * @param data The data to send.
+     * @throws IOException
+     * @throws InterruptedException
+     **/
+    public void patch(String endpoint, String data) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(endpoint))
+                .method("PATCH", HttpRequest.BodyPublishers.ofString(data))
+                .header("Content-Type", "application/json")
+                .build();
 
-        String body = data;
-
-        try(OutputStream outStream = connection.getOutputStream()) {
-            byte[] input = body.getBytes("utf-8");
-            outStream.write(input, 0, input.length);
-        } catch(Exception e) {
-            System.out.println(e);
-        }
-
-        int status = connection.getResponseCode();
-
-        if (status > 299) {
-            throw new Exception(String.valueOf(connection.getErrorStream()));
-        }
+        client.send(request, BodyHandlers.ofString());
     }
 }
