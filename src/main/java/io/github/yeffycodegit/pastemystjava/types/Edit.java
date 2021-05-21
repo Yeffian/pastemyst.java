@@ -13,12 +13,13 @@ public class Edit {
     private String _id;
 
     /**
-     * The ID of the edit, multiple edits can share the same id showing that multiple fields were changed at the same time
+     * The ID of the edit, multiple edits can share the same id showing that multiple fields were changed at the same time.
      **/
     private String editId;
 
     /**
      * The type of edit, possible values are:
+     *
      * - title(0)
      * - pastyTitle(1)
      * - pastyLanguage(2)
@@ -34,7 +35,7 @@ public class Edit {
     private String[] metadata;
 
     /**
-     * The actual paste edit, it stores old data before the edit as the current paste stores the new data
+     * The actual paste edit, it stores old data before the edit as the current paste stores the new data.
      **/
     private String edit;
 

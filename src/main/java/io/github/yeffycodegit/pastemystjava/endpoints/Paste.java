@@ -1,6 +1,8 @@
 package io.github.yeffycodegit.pastemystjava.endpoints;
 
-// Class to implement functionality for the time endpoint
+/**
+ * Represents the Paste endpoint on pastemyst. Used for creating, deleting, and getting data on pastes.
+ **/
 public class Paste {
     // to be implemented
 }

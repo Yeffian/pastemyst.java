@@ -1,6 +1,8 @@
 package io.github.yeffycodegit.pastemystjava.endpoints;
 
-// Class to implement functionality for the user endpoint
+/**
+ * Represents the User endpoint on pastemyst. Used for getting data related to users on pastemyst.
+ **/
 public class User {
     // to be implemented
 }

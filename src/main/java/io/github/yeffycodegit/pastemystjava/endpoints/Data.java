@@ -1,6 +1,8 @@
 package io.github.yeffycodegit.pastemystjava.endpoints;
 
-// Class to implement functionality for the data endpoint
+/**
+ * Represents the Data endpoint on pastemyst. Used for getting various simple data.
+ **/
 public class Data {
     // to be implemented
 }
