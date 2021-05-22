@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import io.github.yeffycodegit.pastemystjava.core.Client;
 import io.github.yeffycodegit.pastemystjava.endpoints.Time;
 
+@DisplayName("Tests for the time endpoint")
 public class TimeEndpointTests {
     private Time time;
 

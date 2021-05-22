@@ -1,3 +1,5 @@
+package io.github.yeffycodegit.pastemystjava.lib;
+
 import io.github.yeffycodegit.pastemystjava.Pastemyst;
 import io.github.yeffycodegit.pastemystjava.types.Language;
 

@@ -84,6 +84,7 @@ public class Data {
 
         language.setName(obj.get("name").toString());
         language.setColour(obj.get("color").toString());
+        language.setMode(obj.get("mode").toString());
         language.setMimes(convertToStringArray((JSONArray) obj.get("mimes")));
         language.setExtensions(convertToStringArray((JSONArray) obj.get("ext")));
 
