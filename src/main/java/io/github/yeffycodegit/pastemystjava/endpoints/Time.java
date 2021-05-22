@@ -15,6 +15,13 @@ public class Time {
         this.client = client;
     }
 
+    /**
+     * Returns the time a paste should expire, given a time when the hypothetical paste was created and a time when the hypothetical paste expires.
+     *
+     * @param createdAt The time the hypothetical paste was created.
+     * @param expiresIn The time the hypothetical paste expires.
+     * @return {@code String} A string containing when the paste should expire.
+     **/
     public String whenPasteShouldExpire(String createdAt, String expiresIn) {
         String whenPasteShouldExpireEndpoint = String.format("/expiresInToUnixTime?createdAt=%s&expiresIn=%s", createdAt, expiresIn);
 

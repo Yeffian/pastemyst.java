@@ -20,6 +20,14 @@ public class Data {
 
     private static final String ENDPOINT = PastemystApi.BASE_ENDPOINT + PastemystApi.DATA;
 
+    /**
+     * Gets a {@code Language} object, give the name of the language.
+     *
+     * @param lang The name of the language.
+     * @return {@code Language} The language that was asked for.
+     * @throws IOException
+     * @throws InterruptedException
+     **/
     public Language getLangByName(String lang) throws IOException, InterruptedException {
         String langByNameEndpoint = String.format("/language?name=%s", lang);
 
@@ -28,6 +36,14 @@ public class Data {
         return newLang(obj);
     }
 
+    /**
+     * Gets a {@code Language} object, give the file extension of the language.
+     *
+     * @param extension The extension of the language.
+     * @return {@code Language} The language that was asked for.
+     * @throws IOException
+     * @throws InterruptedException
+     **/
     public Language getLangByExtension(String extension) throws IOException, InterruptedException {
         String langByExtensionEndpoint = String.format("/languageExt?extension=%s", extension);
 
@@ -36,6 +52,12 @@ public class Data {
         return newLang(obj);
     }
 
+    /**
+     * Utility function to convert a {@code JSONArray} to a {@code String[]}.
+     *
+     * @param jsonArray The {@code JSONArray} to convert.
+     * @return {@code String[]} the String array formed from the json array.
+     **/
     private String[] convertToStringArray(JSONArray jsonArray) {
         String[] stringArray = null;
 
@@ -51,6 +73,12 @@ public class Data {
         return stringArray;
     }
 
+    /**
+     * Utility function to create a new {@code Language} object by parsing a {@code JSONObject}.
+     *
+     * @param obj The {@code JSONObject} to parse.
+     * @return {@code Language} The language object created from parsing the {@code JSONObject}.
+     **/
     private Language newLang(JSONObject obj) {
         Language language = new Language();
 
