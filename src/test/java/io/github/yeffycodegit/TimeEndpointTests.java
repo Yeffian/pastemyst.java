@@ -7,15 +7,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import io.github.yeffycodegit.pastemystjava.core.Client;
-import io.github.yeffycodegit.pastemystjava.endpoints.Time;
+import io.github.yeffycodegit.pastemystjava.endpoints.TimeEndpoint;
 
 @DisplayName("Tests for the time endpoint")
 public class TimeEndpointTests {
-    private Time time;
+    private TimeEndpoint time;
 
     @BeforeEach
     public void setup() throws Exception {
-        time = new Time(new Client());
+        time = new TimeEndpoint(new Client());
     }
 
     @Test

@@ -22,6 +22,8 @@ import java.util.HashMap;
 public class Client {
     private static HttpClient client;
 
+    public int status;
+
     public Client() {
         client = HttpClient.newHttpClient();
     }
@@ -40,6 +42,8 @@ public class Client {
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        status = response.statusCode();
 
         return response.body();
     }

@@ -9,11 +9,11 @@ import org.json.JSONObject;
 /**
  * Represents the Time endpoint on pastemyst. Used for getting useful data related to time.
  **/
-public class Time {
+public class TimeEndpoint {
     private static final String ENDPOINT = PastemystApi.BASE_ENDPOINT + PastemystApi.TIME;
     Client client;
 
-    public Time(Client client) {
+    public TimeEndpoint(Client client) {
         this.client = client;
     }
 
