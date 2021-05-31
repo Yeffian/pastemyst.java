@@ -5,7 +5,7 @@ import io.github.yeffycodegit.pastemystjava.core.Client;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import io.github.yeffycodegit.pastemystjava.endpoints.Data;
+import io.github.yeffycodegit.pastemystjava.endpoints.DataEndpoint;
 import io.github.yeffycodegit.pastemystjava.types.Language;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,11 +15,11 @@ import java.io.IOException;
 
 @DisplayName("Tests for the Data endpoint")
 public class DataEndpointTests {
-    private Data data;
+    private DataEndpoint data;
 
     @BeforeEach
     public void setup() throws Exception {
-        data = new Data(new Client());
+        data = new DataEndpoint(new Client());
     }
 
     @Test

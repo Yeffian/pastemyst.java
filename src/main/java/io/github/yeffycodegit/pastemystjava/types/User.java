@@ -25,6 +25,12 @@ public class User {
     /** If the user is a contributer or not. **/
     private boolean contributer;
 
+    /** List of paste id's the user has starred. **/
+    private String[] stars;
+
+    /** User ids of the service the user used to create an account. **/
+    private Object serviceIds;
+
     public String get_id() {
         return _id;
     }
@@ -79,5 +85,21 @@ public class User {
 
     public void setContributer(boolean contributer) {
         this.contributer = contributer;
+    }
+
+    public String[] getStars() {
+        return stars;
+    }
+
+    public void setStars(String[] stars) {
+        this.stars = stars;
+    }
+
+    public Object getServiceIds() {
+        return serviceIds;
+    }
+
+    public void setServiceIds(Object serviceIds) {
+        this.serviceIds = serviceIds;
     }
 }

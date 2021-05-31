@@ -49,6 +49,28 @@ public class Client {
     }
 
     /**
+     * Performs a GET request on a given endpoint.
+     *
+     * @param endpoint The endpoint to send the request to.
+     * @param authToken The token to add on the Authorization header.
+     * @return {@code String} containing the result of the performed request.
+     * @throws IOException
+     * @throws InterruptedException
+     **/
+    public String get(String endpoint, String authToken) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(endpoint))
+                .setHeader("Authorization", authToken)
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        status = response.statusCode();
+
+        return response.body();
+    }
+
+    /**
      * Performs a POST request on a given endpoint, and posts the given data.
      *
      * @param endpoint The endpoint to send the request to.
