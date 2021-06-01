@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents the User endpoint on pastemyst. Used for getting data related to users on pastemyst.
@@ -66,12 +68,34 @@ public class UserEndpoint {
         return user;
     }
 
-    public void getUserPasteIds(String token) throws IOException, InterruptedException {
+    /**
+     * Gets all the paste ids of a user on pastemyst, given a token.
+     *
+     * @param token The token to use to find the user.
+     * @throws IOException
+     * @throws InterruptedException
+     * @return The {@code String[]} which contains all the paste id's.
+     **/
+    public String[] getUserPasteIds(String token) throws IOException, InterruptedException {
        String getUserPastesEndpoint = "/self/pastes";
 
-       JSONObject obj = new JSONObject(client.get(ENDPOINT + getUserPastesEndpoint, token));
+       List<String> ids = new ArrayList<String>();
 
-       System.out.println(obj.getJSONArray(""));
+       JSONArray obj = new JSONArray(client.get(ENDPOINT + getUserPastesEndpoint, token));
+
+       for(Object id : obj) {
+           id = id.toString();
+
+           ids.add(id.toString());
+       }
+
+       String idsArr[] = new String[ids.size()];
+
+        for (int j = 0; j < ids.size(); j++) {
+            idsArr[j] = ids.get(j);
+        }
+
+        return idsArr;
     }
 
     /**

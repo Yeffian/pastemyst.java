@@ -10,6 +10,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
         Pastemyst pastemyst = new Pastemyst();
-        pastemyst.user.getUserPasteIds("d7LkmnTPUWMTWQCVyv85MV1M74YBKBfDiKh7tCbHjPA=");
+        for(String id :  pastemyst.user.getUserPasteIds("redacted")) {
+            System.out.println(id);
+        }
     }
 }
