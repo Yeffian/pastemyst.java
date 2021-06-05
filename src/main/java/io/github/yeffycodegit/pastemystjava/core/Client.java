@@ -1,17 +1,11 @@
 package io.github.yeffycodegit.pastemystjava.core;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
 import java.net.URI;
-import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.net.http.HttpResponse;
-import java.util.HashMap;
 
 /**
  * Implements functionality for performing different requests on the API, and is used by the rest of the library to implement its functionality.
@@ -84,7 +78,26 @@ public class Client {
                 .POST(HttpRequest.BodyPublishers.ofString(body))
                 .build();
 
-        client.send(request, BodyHandlers.discarding());
+        client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
+    /**
+     * Performs a POST request on a given endpoint, and posts the given data.
+     *
+     * @param endpoint The endpoint to send the request to.
+     * @param body The data to post to the endpoint.
+     * @param authToken The token to add on the Authorization header.
+     * @throws IOException
+     * @throws InterruptedException
+     **/
+    public void post(String endpoint, String body, String authToken) throws InterruptedException, IOException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(endpoint))
+                .setHeader("Authorization", authToken)
+                .POST(HttpRequest.BodyPublishers.ofString(body))
+                .build();
+
+        client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 
     /**
@@ -100,7 +113,25 @@ public class Client {
                 .DELETE()
                 .build();
 
-        client.send(request, BodyHandlers.ofString());
+        client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
+    /**
+     * Performs a DELETE request on a given endpoint.
+     *
+     * @param endpoint The endpoint to send the request to.
+     * @param authToken The token to add on the Authorization header.
+     * @throws IOException
+     * @throws InterruptedException
+     **/
+    public void delete(String endpoint, String authToken) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(endpoint))
+                .setHeader("Authorization", authToken)
+                .DELETE()
+                .build();
+
+        client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 
     /**
@@ -118,6 +149,26 @@ public class Client {
                 .header("Content-Type", "application/json")
                 .build();
 
-        client.send(request, BodyHandlers.ofString());
+        client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
+    /**
+     * Performs a PATCH request on a given endpoint and sends the given data.
+     *
+     * @param endpoint The endpoint to send the request to.
+     * @param data The data to send.
+     * @param authToken The token to add on the Authorization header.
+     * @throws IOException
+     * @throws InterruptedException
+     **/
+    public void patch(String endpoint, String data, String authToken) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(endpoint))
+                .method("PATCH", HttpRequest.BodyPublishers.ofString(data))
+                .setHeader("Authorization", authToken)
+                .header("Content-Type", "application/json")
+                .build();
+
+        client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 }
