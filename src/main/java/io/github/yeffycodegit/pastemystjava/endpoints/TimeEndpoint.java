@@ -4,6 +4,7 @@ import io.github.yeffycodegit.pastemystjava.core.Client;
 import io.github.yeffycodegit.pastemystjava.core.Client;
 import io.github.yeffycodegit.pastemystjava.core.PastemystApi;
 import io.github.yeffycodegit.pastemystjava.core.PastemystApi;
+import lombok.NonNull;
 import org.json.JSONObject;
 
 /**
@@ -24,7 +25,7 @@ public class TimeEndpoint {
      * @param expiresIn The time the hypothetical paste expires.
      * @return {@code String} A string containing when the paste should expire.
      **/
-    public String whenPasteShouldExpire(String createdAt, String expiresIn) {
+    public String whenPasteShouldExpire(@NonNull String createdAt, @NonNull String expiresIn) {
         String whenPasteShouldExpireEndpoint = String.format("/expiresInToUnixTime?createdAt=%s&expiresIn=%s", createdAt, expiresIn);
 
         try {

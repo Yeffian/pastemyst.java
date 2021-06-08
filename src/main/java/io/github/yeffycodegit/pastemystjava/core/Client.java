@@ -1,5 +1,7 @@
 package io.github.yeffycodegit.pastemystjava.core;
 
+import lombok.NonNull;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -30,7 +32,7 @@ public class Client {
     * @throws IOException
     * @throws InterruptedException
     **/
-    public String get(String endpoint) throws IOException, InterruptedException {
+    public String get(@NonNull String endpoint) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .build();
@@ -51,7 +53,7 @@ public class Client {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public String get(String endpoint, String authToken) throws IOException, InterruptedException {
+    public String get(@NonNull String endpoint, @NonNull String authToken) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .setHeader("Authorization", authToken)
@@ -72,7 +74,7 @@ public class Client {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public void post(String endpoint, String body) throws InterruptedException, IOException {
+    public void post(@NonNull String endpoint, @NonNull String body) throws InterruptedException, IOException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .POST(HttpRequest.BodyPublishers.ofString(body))
@@ -90,7 +92,7 @@ public class Client {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public void post(String endpoint, String body, String authToken) throws InterruptedException, IOException {
+    public void post(@NonNull String endpoint, @NonNull String body, @NonNull String authToken) throws InterruptedException, IOException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .setHeader("Authorization", authToken)
@@ -107,7 +109,7 @@ public class Client {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public void delete(String endpoint) throws IOException, InterruptedException {
+    public void delete(@NonNull String endpoint) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .DELETE()
@@ -124,7 +126,7 @@ public class Client {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public void delete(String endpoint, String authToken) throws IOException, InterruptedException {
+    public void delete(@NonNull String endpoint, @NonNull String authToken) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .setHeader("Authorization", authToken)
@@ -142,7 +144,7 @@ public class Client {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public void patch(String endpoint, String data) throws IOException, InterruptedException {
+    public void patch(@NonNull String endpoint, @NonNull String data) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .method("PATCH", HttpRequest.BodyPublishers.ofString(data))
@@ -161,7 +163,7 @@ public class Client {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public void patch(String endpoint, String data, String authToken) throws IOException, InterruptedException {
+    public void patch(@NonNull String endpoint, @NonNull String data, @NonNull String authToken) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .method("PATCH", HttpRequest.BodyPublishers.ofString(data))

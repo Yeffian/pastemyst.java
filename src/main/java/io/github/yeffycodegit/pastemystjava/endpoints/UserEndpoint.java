@@ -3,6 +3,7 @@ package io.github.yeffycodegit.pastemystjava.endpoints;
 import io.github.yeffycodegit.pastemystjava.core.Client;
 import io.github.yeffycodegit.pastemystjava.core.PastemystApi;
 import io.github.yeffycodegit.pastemystjava.types.User;
+import lombok.NonNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -30,7 +31,7 @@ public class UserEndpoint {
      * @param username The user to check for.
      * @return {@code boolean} If the user exists or not.
      **/
-    public boolean getIfUserExists(String username) throws IOException, InterruptedException {
+    public boolean getIfUserExists(@NonNull String username) throws IOException, InterruptedException {
         String notFoundMsg = "{\"statusMessage]\":\"Not Found\"}";
 
         String ifUserExistsEndpoint = String.format("/%s/exists", username);
@@ -50,7 +51,7 @@ public class UserEndpoint {
      * @param username The user to get.
      * @return {@code User} the user.
      **/
-    public User getUser(String username) throws IOException, InterruptedException {
+    public User getUser(@NonNull String username) throws IOException, InterruptedException {
         User user = new User();
 
         String getUserEndpoint = String.format("/%s", username);
@@ -76,7 +77,7 @@ public class UserEndpoint {
      * @throws InterruptedException
      * @return The {@code String[]} which contains all the paste id's.
      **/
-    public String[] getUserPasteIds(String token) throws IOException, InterruptedException {
+    public String[] getUserPasteIds(@NonNull String token) throws IOException, InterruptedException {
        String getUserPastesEndpoint = "/self/pastes";
 
        List<String> ids = new ArrayList<String>();
@@ -106,7 +107,7 @@ public class UserEndpoint {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public User getUserByToken(String token) throws IOException, InterruptedException {
+    public User getUserByToken(@NonNull String token) throws IOException, InterruptedException {
         User user = new User();
 
         String getUserEndpoint = String.format("/self");
@@ -132,7 +133,7 @@ public class UserEndpoint {
      * @param jsonArray The {@code JSONArray} to convert.
      * @return {@code String[]} the String array formed from the json array.
      **/
-    private String[] convertToStringArray(JSONArray jsonArray) {
+    private String[] convertToStringArray(@NonNull JSONArray jsonArray) {
         String[] stringArray = null;
 
         if (jsonArray != null) {

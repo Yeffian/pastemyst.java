@@ -3,6 +3,7 @@ package io.github.yeffycodegit.pastemystjava.endpoints;
 import io.github.yeffycodegit.pastemystjava.core.Client;
 import io.github.yeffycodegit.pastemystjava.core.PastemystApi;
 import io.github.yeffycodegit.pastemystjava.types.Language;
+import lombok.NonNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -28,7 +29,7 @@ public class DataEndpoint {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public Language getLangByName(String lang) throws IOException, InterruptedException {
+    public Language getLangByName(@NonNull String lang) throws IOException, InterruptedException {
         String langByNameEndpoint = String.format("/language?name=%s", lang);
 
         JSONObject obj = new JSONObject(client.get(ENDPOINT + langByNameEndpoint));
@@ -44,7 +45,7 @@ public class DataEndpoint {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public Language getLangByExtension(String extension) throws IOException, InterruptedException {
+    public Language getLangByExtension(@NonNull String extension) throws IOException, InterruptedException {
         String langByExtensionEndpoint = String.format("/languageExt?extension=%s", extension);
 
         JSONObject obj = new JSONObject(client.get(ENDPOINT + langByExtensionEndpoint));
@@ -58,7 +59,7 @@ public class DataEndpoint {
      * @param jsonArray The {@code JSONArray} to convert.
      * @return {@code String[]} the String array formed from the json array.
      **/
-    private String[] convertToStringArray(JSONArray jsonArray) {
+    private String[] convertToStringArray(@NonNull JSONArray jsonArray) {
         String[] stringArray = null;
 
         if (jsonArray != null) {
@@ -79,7 +80,7 @@ public class DataEndpoint {
      * @param obj The {@code JSONObject} to parse.
      * @return {@code Language} The language object created from parsing the {@code JSONObject}.
      **/
-    private Language newLang(JSONObject obj) {
+    private Language newLang(@NonNull JSONObject obj) {
         Language language = new Language();
 
         language.setName(obj.get("name").toString());
