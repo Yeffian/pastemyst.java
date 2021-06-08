@@ -1,105 +1,54 @@
 package io.github.yeffycodegit.pastemystjava.types;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Represents a user on pastemyst.
  **/
 public class User {
     /** The id of the user. **/
+    @Getter
+    @Setter
     private String _id;
 
     /** The username of the user. **/
+    @Getter
+    @Setter
     private String username;
 
     /** The avatar url of the user. **/
+    @Getter
+    @Setter
     private String avatarUrl;
 
     /** The default language of the user. **/
+    @Getter
+    @Setter
     private String defaultLang;
 
     /** If the user has a public profile or not. **/
+    @Getter
+    @Setter
     private boolean publicProfile;
 
     /** How long the user has been a supporter, 0 if not a supporter. **/
+    @Getter
+    @Setter
     private int supportLength;
 
     /** If the user is a contributer or not. **/
+    @Getter
+    @Setter
     private boolean contributer;
 
     /** List of paste id's the user has starred. **/
+    @Getter
+    @Setter
     private String[] stars;
 
     /** User ids of the service the user used to create an account. **/
+    @Getter
+    @Setter
     private Object serviceIds;
-
-    public String get_id() {
-        return _id;
-    }
-
-    public void set_id(String _id) {
-        this._id = _id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getAvatarUrl() {
-        return avatarUrl;
-    }
-
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
-    }
-
-    public String getDefaultLang() {
-        return defaultLang;
-    }
-
-    public void setDefaultLang(String defaultLang) {
-        this.defaultLang = defaultLang;
-    }
-
-    public boolean isPublicProfile() {
-        return publicProfile;
-    }
-
-    public void setPublicProfile(boolean publicProfile) {
-        this.publicProfile = publicProfile;
-    }
-
-    public int getSupportLength() {
-        return supportLength;
-    }
-
-    public void setSupportLength(int supportLength) {
-        this.supportLength = supportLength;
-    }
-
-    public boolean isContributer() {
-        return contributer;
-    }
-
-    public void setContributer(boolean contributer) {
-        this.contributer = contributer;
-    }
-
-    public String[] getStars() {
-        return stars;
-    }
-
-    public void setStars(String[] stars) {
-        this.stars = stars;
-    }
-
-    public Object getServiceIds() {
-        return serviceIds;
-    }
-
-    public void setServiceIds(Object serviceIds) {
-        this.serviceIds = serviceIds;
-    }
 }

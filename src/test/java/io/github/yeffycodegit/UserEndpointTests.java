@@ -6,16 +6,21 @@ import io.github.yeffycodegit.pastemystjava.core.Client;
 import io.github.yeffycodegit.pastemystjava.endpoints.TimeEndpoint;
 import io.github.yeffycodegit.pastemystjava.endpoints.UserEndpoint;
 import io.github.yeffycodegit.pastemystjava.types.User;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
 
 @DisplayName("Tests for the user endpoint")
 public class UserEndpointTests {
     private UserEndpoint user;
+
+    File resourceFile;
+    JSONObject resource;
 
     @BeforeEach
     public void setup() throws Exception {
