@@ -18,10 +18,7 @@ import java.io.IOException;
 @DisplayName("Tests for the user endpoint")
 public class UserEndpointTests {
     private UserEndpoint user;
-
-    File resourceFile;
-    JSONObject resource;
-
+    
     @BeforeEach
     public void setup() throws Exception {
         user = new UserEndpoint(new Client());

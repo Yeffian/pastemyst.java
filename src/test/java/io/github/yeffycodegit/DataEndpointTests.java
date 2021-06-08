@@ -24,51 +24,39 @@ public class DataEndpointTests {
 
     @Test
     @DisplayName("get a language by its name")
-    public void getLangByNameTest() {
+    public void getLangByNameTest() throws IOException, InterruptedException {
         String[] mimes = new String[]{"text/x-python"};
         String[] extensions = new String[]{"BUILD", "bzl", "py", "pyw"};
+        Language lang = data.getLangByName("Python");
+        assertEquals("Python", lang.getName());
+        assertEquals("#3572A5", lang.getColour());
+        assertEquals("python", lang.getMode());
 
-        try {
-            Language lang = data.getLangByName("Python");
-            assertEquals("Python", lang.getName());
-            assertEquals("#3572A5", lang.getColour());
-            assertEquals("python", lang.getMode());
+        for(int i = 0; i == lang.getMimes().length; i++) {
+            assertEquals(mimes[i], lang.getMimes()[i]);
+        }
 
-            for(int i = 0; i == lang.getMimes().length; i++) {
-                assertEquals(mimes[i], lang.getMimes()[i]);
-            }
-
-            for(int i = 0; i == lang.getExtensions().length; i++) {
-                assertEquals(extensions[i], lang.getExtensions()[i]);
-            }
-
-        } catch(Exception e) {
-            e.printStackTrace();
+        for(int i = 0; i == lang.getExtensions().length; i++) {
+            assertEquals(extensions[i], lang.getExtensions()[i]);
         }
     }
 
     @Test
     @DisplayName("get a language by its extension")
-    public void getLangByExtensionTest() {
+    public void getLangByExtensionTest() throws IOException, InterruptedException {
         String[] mimes = new String[]{"text/x-python"};
         String[] extensions = new String[]{"BUILD", "bzl", "py", "pyw"};
+        Language lang = data.getLangByExtension("py");
+        assertEquals("Python", lang.getName());
+        assertEquals("#3572A5", lang.getColour());
+        assertEquals("python", lang.getMode());
 
-        try {
-            Language lang = data.getLangByExtension("py");
-            assertEquals("Python", lang.getName());
-            assertEquals("#3572A5", lang.getColour());
-            assertEquals("python", lang.getMode());
+        for(int i = 0; i == lang.getMimes().length; i++) {
+            assertEquals(mimes[i], lang.getMimes()[i]);
+        }
 
-            for(int i = 0; i == lang.getMimes().length; i++) {
-                assertEquals(mimes[i], lang.getMimes()[i]);
-            }
-
-            for(int i = 0; i == lang.getExtensions().length; i++) {
-                assertEquals(extensions[i], lang.getExtensions()[i]);
-            }
-
-        } catch(Exception e) {
-            e.printStackTrace();
+        for(int i = 0; i == lang.getExtensions().length; i++) {
+            assertEquals(extensions[i], lang.getExtensions()[i]);
         }
     }
 }
