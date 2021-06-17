@@ -24,7 +24,7 @@ public class Pastemyst {
         time = new TimeEndpoint(client);
         data = new DataEndpoint(client);
         user = new UserEndpoint(client);
-        paste = new PasteEndpoint();
+        paste = new PasteEndpoint(client);
     }
 
 }
