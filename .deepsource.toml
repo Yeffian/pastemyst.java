@@ -1,0 +1,10 @@
+version = 1
+
+test_patterns = ["src/test/java/io/github/yeffycodegit"]
+
+[[analyzers]]
+name = "java"
+enabled = true
+
+  [analyzers.meta]
+  runtime_version = "11"
