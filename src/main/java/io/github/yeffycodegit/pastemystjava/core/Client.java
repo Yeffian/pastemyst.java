@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-import java.net.http.HttpResponse.BodyHandlers;
 import java.net.http.HttpResponse;
 
 /**
@@ -16,7 +15,7 @@ import java.net.http.HttpResponse;
  * @version 1.0.0
  **/
 public class Client {
-    private HttpClient client;
+    private final HttpClient client;
 
     public int status;
 
