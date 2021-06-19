@@ -10,7 +10,7 @@ import org.json.JSONObject;
  **/
 public class TimeEndpoint {
     private static final String ENDPOINT = PastemystApi.BASE_ENDPOINT + PastemystApi.TIME;
-    Client client;
+    private final Client client;
 
     public TimeEndpoint(Client client) {
         this.client = client;

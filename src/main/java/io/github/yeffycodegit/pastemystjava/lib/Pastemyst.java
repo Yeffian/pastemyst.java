@@ -10,8 +10,6 @@ import io.github.yeffycodegit.pastemystjava.endpoints.UserEndpoint;
  * The core class of the library. From this class, all the functions from all the different endpoints can be accessed.
  **/
 public class Pastemyst {
-    private Client client;
-
     public TimeEndpoint time;
     public DataEndpoint data;
     public PasteEndpoint paste;
@@ -19,7 +17,7 @@ public class Pastemyst {
 
 
     public Pastemyst() {
-        client = new Client();
+        Client client = new Client();
 
         time = new TimeEndpoint(client);
         data = new DataEndpoint(client);

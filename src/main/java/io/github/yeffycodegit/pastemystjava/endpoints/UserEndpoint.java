@@ -17,7 +17,7 @@ import java.util.List;
  **/
 
 public class UserEndpoint {
-    private Client client;
+    private final Client client;
 
     public UserEndpoint(Client client) {
         this.client = client;

@@ -10,7 +10,7 @@ import lombok.NonNull;
  **/
 public class PasteEndpoint {
     private final String ENDPOINT = PastemystApi.BASE_ENDPOINT + PastemystApi.PASTE;
-    private Client client;
+    private final Client client;
 
     public PasteEndpoint(Client client) { this.client = client; }
 

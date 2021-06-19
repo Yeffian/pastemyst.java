@@ -13,7 +13,7 @@ import java.io.IOException;
  * Represents the Data endpoint on pastemyst. Used for getting various simple data.
  **/
 public class DataEndpoint {
-    private Client client;
+    private final Client client;
 
     public DataEndpoint(Client client) {
         this.client = client;
