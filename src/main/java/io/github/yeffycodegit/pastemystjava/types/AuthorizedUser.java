@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-public class SelfUser {
+public class AuthorizedUser {
     /** The id of the user. **/
     @Getter
     @Setter

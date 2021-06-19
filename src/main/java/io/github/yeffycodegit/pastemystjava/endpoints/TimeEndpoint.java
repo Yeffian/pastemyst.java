@@ -1,8 +1,6 @@
 package io.github.yeffycodegit.pastemystjava.endpoints;
 
 import io.github.yeffycodegit.pastemystjava.core.Client;
-import io.github.yeffycodegit.pastemystjava.core.Client;
-import io.github.yeffycodegit.pastemystjava.core.PastemystApi;
 import io.github.yeffycodegit.pastemystjava.core.PastemystApi;
 import lombok.NonNull;
 import org.json.JSONObject;

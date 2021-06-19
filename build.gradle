@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "org.sonarqube" version "3.3"
 }
 
 group 'com.github.yeffycodegit'
@@ -17,6 +18,14 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
 
     implementation 'org.json:json:20210307'
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "YeffyCodeGit_pastemyst.java"
+    property "sonar.organization", "yeffycodegit"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }
 
 test {

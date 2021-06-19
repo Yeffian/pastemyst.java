@@ -1,5 +1,6 @@
 package io.github.yeffycodegit.pastemystjava.types;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,14 +42,4 @@ public class User {
     @Getter
     @Setter
     private boolean contributer;
-
-    /** List of paste id's the user has starred. **/
-    @Getter
-    @Setter
-    private String[] stars;
-
-    /** User ids of the service the user used to create an account. **/
-    @Getter
-    @Setter
-    private Object serviceIds;
 }

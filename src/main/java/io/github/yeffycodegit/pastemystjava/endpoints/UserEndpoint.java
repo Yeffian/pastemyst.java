@@ -2,6 +2,7 @@ package io.github.yeffycodegit.pastemystjava.endpoints;
 
 import io.github.yeffycodegit.pastemystjava.core.Client;
 import io.github.yeffycodegit.pastemystjava.core.PastemystApi;
+import io.github.yeffycodegit.pastemystjava.types.AuthorizedUser;
 import io.github.yeffycodegit.pastemystjava.types.User;
 import lombok.NonNull;
 import org.json.JSONArray;
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * Represents the User endpoint on pastemyst. Used for getting data related to users on pastemyst.
  **/
+
 public class UserEndpoint {
     private Client client;
 
@@ -34,13 +36,11 @@ public class UserEndpoint {
      * @return {@code boolean} If the user exists or not.
      **/
     public boolean getIfUserExists(@NonNull String username) throws IOException, InterruptedException {
-        String notFoundMsg = "{\"statusMessage]\":\"Not Found\"}";
-
         String ifUserExistsEndpoint = String.format("/%s/exists", username);
 
-        String res = client.get(ENDPOINT + ifUserExistsEndpoint);
+        client.get(ENDPOINT + ifUserExistsEndpoint);
 
-        if(client.status == 200) return true;
+        if (client.status == 200) return true;
 
         return false;
     }
@@ -53,8 +53,6 @@ public class UserEndpoint {
      * @param username The user to get.
      *
      * @apiNote If the user account is private, this function will not find the user. But if you have the user's token, refer to {@code getUserByToken}.
-     *
-     * @return {@code User} the user.
      **/
     public User getUser(@NonNull String username) throws IOException, InterruptedException {
         User user = new User();
@@ -112,8 +110,8 @@ public class UserEndpoint {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public User getUserByToken(@NonNull String token) throws IOException, InterruptedException {
-        User user = new User();
+    public AuthorizedUser getUserByToken(@NonNull String token) throws IOException, InterruptedException {
+        AuthorizedUser user = new AuthorizedUser();
 
         String getUserEndpoint = String.format("/self");
 
@@ -152,5 +150,4 @@ public class UserEndpoint {
 
         return stringArray;
     }
-
 }

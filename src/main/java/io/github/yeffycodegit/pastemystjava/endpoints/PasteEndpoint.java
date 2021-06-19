@@ -3,14 +3,7 @@ package io.github.yeffycodegit.pastemystjava.endpoints;
 import io.github.yeffycodegit.pastemystjava.core.Client;
 import io.github.yeffycodegit.pastemystjava.core.PastemystApi;
 import io.github.yeffycodegit.pastemystjava.types.Paste;
-import io.github.yeffycodegit.pastemystjava.types.Pasty;
 import lombok.NonNull;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Represents the PasteEndpoint endpoint on pastemyst. Used for creating, deleting, and getting data on pastes.
@@ -27,7 +20,7 @@ public class PasteEndpoint {
      * @param id The id of the paste.
      * @return {@code Paste} the returned paste object.
      **/
-    public Paste getPaste(@NonNull String id) {
+    public void getPaste(@NonNull String id) {
 
     }
 
