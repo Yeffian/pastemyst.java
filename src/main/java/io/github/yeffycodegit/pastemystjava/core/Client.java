@@ -16,7 +16,7 @@ import java.net.http.HttpResponse;
  * @version 1.0.0
  **/
 public class Client {
-    private static HttpClient client;
+    private HttpClient client;
 
     public int status;
 
