@@ -1,9 +1,9 @@
-<h2 align="center">Pastemyst.java</h2>
+<h1 align="center">Pastemyst.java</h1>
 
 <p><strong>pastemyst.java</strong> is a API Wrapper, written in Java. The library is in early development, and all contributions are welcome.</p>
 <p>Check out Pastemyst here https://paste.myst.rs/</p>
 
-<h1>Get the language by name and extension</h1>
+<h2>Get the language by name and extension</h2>
 
 ```java
 import io.github.yeffycodegit.pastemystjava.lib.Pastemyst;
@@ -21,7 +21,7 @@ public class Main {
 }
 ```
 
-<h1>Get when the paste should expire</h1>
+<h2>Get when the paste should expire</h2>
 
 ```java
 import io.github.yeffycodegit.pastemystjava.lib.Pastemyst;
@@ -35,7 +35,7 @@ public static void main(String[] args) {
 }
 ```
 
-<h1>Get a user on pastemyst/if a user exists on pastemyst</h1>
+<h2>Get a user on pastemyst/if a user exists on pastemyst</h2>
 
 ```java
 import io.github.yeffycodegit.pastemystjava.lib.Pastemyst;
