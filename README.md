@@ -28,7 +28,7 @@ import io.github.yeffycodegit.pastemystjava.lib.Pastemyst;
 
 public class Main {
 public static void main(String[] args) {
-Pastemyst pastemyst = new Pastemyst();
+        Pastemyst pastemyst = new Pastemyst();
 
         System.out.println(pastemyst.time.whenPasteShouldExpire("1588441258", "1w"));
     }
