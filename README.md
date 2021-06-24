@@ -22,6 +22,7 @@ public class Main {
 ```
 
 <h1>Get when the paste should expire</h1>
+
 ```java
 import io.github.yeffycodegit.pastemystjava.lib.Pastemyst;
 
