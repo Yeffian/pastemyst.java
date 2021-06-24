@@ -79,7 +79,7 @@ public class Paste {
      **/
     @Getter
     @Setter
-    private String[] tags;
+    private List<String> tags;
 
     /**
      * List of pasties/files in the paste.
@@ -94,5 +94,5 @@ public class Paste {
      **/
     @Getter
     @Setter
-    private Edit[] edits;
+    private List<Edit> edits;
 }
