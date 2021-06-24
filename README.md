@@ -34,3 +34,21 @@ public static void main(String[] args) {
     }
 }
 ```
+
+<h1>Get a user on pastemyst/if a user exists on pastemyst</h1>
+
+```java
+import io.github.yeffycodegit.pastemystjava.lib.Pastemyst;
+import io.github.yeffycodegit.pastemystjava.types.User;
+
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        Pastemyst pastemyst = new Pastemyst();
+
+        User user = pastemyst.user.getUser("YeffyCodeGit");
+        boolean exists = pastemyst.user.getIfUserExists("CodeMyst");
+    }
+}
+```
