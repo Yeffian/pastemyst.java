@@ -23,7 +23,7 @@ public class Paste {
      **/
     @Getter
     @Setter
-    private String ownerId;
+    private transient String ownerId;
 
     /**
      * The title of the paste.
@@ -37,7 +37,7 @@ public class Paste {
      **/
     @Getter
     @Setter
-    private int createdAt;
+    private transient int createdAt;
 
     /**
      * The time when the paste will expire, possible values are never, 1h, 2h, 10h, 1d, 2d, 1w, 1m, 1y.
@@ -51,14 +51,14 @@ public class Paste {
      **/
     @Getter
     @Setter
-    private int deletesAt;
+    private transient int deletesAt;
 
     /**
      * The number of stars the paste received.
      **/
     @Getter
     @Setter
-    private int stars;
+    private transient int stars;
 
     /**
      * If the paste is private, its only accessible by the owner of the paste.
@@ -79,7 +79,7 @@ public class Paste {
      **/
     @Getter
     @Setter
-    private List<String> tags;
+    private String tags;
 
     /**
      * List of pasties/files in the paste.
@@ -94,5 +94,5 @@ public class Paste {
      **/
     @Getter
     @Setter
-    private List<Edit> edits;
+    private transient List<Edit> edits;
 }

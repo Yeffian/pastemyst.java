@@ -1,5 +1,6 @@
 package io.github.yeffycodegit.pastemystjava.endpoints;
 
+import com.google.gson.Gson;
 import io.github.yeffycodegit.pastemystjava.core.Client;
 import io.github.yeffycodegit.pastemystjava.core.PastemystApi;
 import io.github.yeffycodegit.pastemystjava.types.Edit;
@@ -11,6 +12,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Represents the PasteEndpoint endpoint on pastemyst. Used for creating, deleting, and getting data on pastes.
@@ -46,9 +48,10 @@ public class PasteEndpoint {
         editsArray.forEach(e -> edits.add(newEdit(new JSONObject(String.valueOf(e)))));
         tagsArray.forEach(e -> tags.add(e.toString()));
 
+
         paste.setPasties(pasties);
         paste.setEdits(edits);
-        paste.setTags(tags);
+        paste.setTags(tags.stream().collect(Collectors.joining(", ")));
         paste.setTitle(obj.get("title").toString());
         paste.set_id(obj.get("_id").toString());
         paste.setCreatedAt((int)obj.get("createdAt"));
@@ -67,8 +70,11 @@ public class PasteEndpoint {
      *
      * @param paste The paste to create.
      **/
-    public void createPaste(@NonNull Paste paste) {
-
+    public String createPaste(@NonNull Paste paste, @NonNull String token) throws IOException, InterruptedException {
+        Gson gson = new Gson();
+        
+        JSONObject obj = new JSONObject(client.post(ENDPOINT, gson.toJson(paste), token));
+        return obj.get("_id").toString();
     }
 
     /**

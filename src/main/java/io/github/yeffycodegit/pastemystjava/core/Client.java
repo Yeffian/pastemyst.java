@@ -72,14 +72,17 @@ public class Client {
      * @param body The data to post to the endpoint.
      * @throws IOException
      * @throws InterruptedException
+     * @return {@code String} the response from the post request.
      **/
-    public void post(@NonNull String endpoint, @NonNull String body) throws InterruptedException, IOException {
+    public String post(@NonNull String endpoint, @NonNull String body) throws InterruptedException, IOException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .POST(HttpRequest.BodyPublishers.ofString(body))
                 .build();
 
-        client.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response.body();
     }
 
     /**
@@ -90,15 +93,19 @@ public class Client {
      * @param authToken The token to add on the Authorization header.
      * @throws IOException
      * @throws InterruptedException
+     * @return {@code String} the response from the post request.
      **/
-    public void post(@NonNull String endpoint, @NonNull String body, @NonNull String authToken) throws InterruptedException, IOException {
+    public String post(@NonNull String endpoint, @NonNull String body, @NonNull String authToken) throws InterruptedException, IOException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
+                .setHeader("Content-Type", "application/json")
                 .setHeader("Authorization", authToken)
                 .POST(HttpRequest.BodyPublishers.ofString(body))
                 .build();
 
-        client.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response.body();
     }
 
     /**

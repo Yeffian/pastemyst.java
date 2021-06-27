@@ -14,7 +14,7 @@ public class Pasty {
      **/
     @Getter
     @Setter
-    private String _id;
+    private transient String _id;
 
     /**
      * The language of the pasty.
