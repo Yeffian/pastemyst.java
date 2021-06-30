@@ -1,9 +1,12 @@
 package io.github.yeffycodegit.pastemystjava.endpoints;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import io.github.yeffycodegit.pastemystjava.core.Client;
 import io.github.yeffycodegit.pastemystjava.core.PastemystApi;
 import io.github.yeffycodegit.pastemystjava.types.Edit;
+import io.github.yeffycodegit.pastemystjava.types.PasteEdit;
 import io.github.yeffycodegit.pastemystjava.types.Paste;
 import io.github.yeffycodegit.pastemystjava.types.Pasty;
 import lombok.NonNull;
@@ -66,8 +69,6 @@ public class PasteEndpoint {
     /**
      * Create a new paste with a {@code Paste} object.
      *
-     * @apiNote If you want the paste to be tied to your user account, check {@code createPasteOnAccount}
-     *
      * @param paste The paste to create.
      **/
     public String createPaste(@NonNull Paste paste, @NonNull String token) throws IOException, InterruptedException {
@@ -77,17 +78,17 @@ public class PasteEndpoint {
         return obj.get("_id").toString();
     }
 
-    /**
-     * Create a new paste with a {@code Paste} object tied to your user account.
-     *
-     * @param paste The paste to create.
-     * @param token The user account token.
-     **/
-    public void createPasteOnAccount(@NonNull Paste paste, @NonNull String token) {
+    public void editPaste(String id, Paste edit, String token) throws IOException, InterruptedException {
 
     }
 
-    private Pasty newPasty(JSONObject obj) {
+    public void deletePaste(String id, String token) throws IOException, InterruptedException {
+        String deletePasteEndpoint = String.format("/%s", id);
+
+        client.delete(ENDPOINT + deletePasteEndpoint, token);
+    }
+
+    private Pasty newPasty(@NonNull JSONObject obj) {
         Pasty pasty = new Pasty();
 
         pasty.set_id(obj.get("_id").toString());
@@ -98,7 +99,7 @@ public class PasteEndpoint {
         return pasty;
     }
 
-    private Edit newEdit(JSONObject obj) {
+    private Edit newEdit(@NonNull JSONObject obj) {
         Edit edit = new Edit();
 
         edit.setEdit(obj.get("edit").toString());

@@ -150,14 +150,16 @@ public class Client {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public void patch(@NonNull String endpoint, @NonNull String data) throws IOException, InterruptedException {
+    public String patch(@NonNull String endpoint, @NonNull String data) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .method("PATCH", HttpRequest.BodyPublishers.ofString(data))
                 .header("Content-Type", "application/json")
                 .build();
 
-        client.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response.body();
     }
 
     /**
@@ -169,7 +171,7 @@ public class Client {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public void patch(@NonNull String endpoint, @NonNull String data, @NonNull String authToken) throws IOException, InterruptedException {
+    public String patch(@NonNull String endpoint, @NonNull String data, @NonNull String authToken) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .method("PATCH", HttpRequest.BodyPublishers.ofString(data))
@@ -177,6 +179,8 @@ public class Client {
                 .header("Content-Type", "application/json")
                 .build();
 
-        client.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response.body();
     }
 }

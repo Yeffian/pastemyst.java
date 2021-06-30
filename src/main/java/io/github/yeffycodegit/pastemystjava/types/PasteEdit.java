@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Class to create a new edit for a {@code Paste}
  **/
-public class EditType {
+public class PasteEdit {
     /**
      * The new title for the paste.
      **/
@@ -31,7 +31,7 @@ public class EditType {
      **/
     private List<Pasty> pasties;
 
-    public EditType(String title, boolean isPrivate, boolean isPublic, String tags, List<Pasty> pasties) {
+    public PasteEdit(String title, boolean isPrivate, boolean isPublic, String tags, List<Pasty> pasties) {
         this.title = title;
         this.isPrivate = isPrivate;
         this.isPublic = isPublic;
