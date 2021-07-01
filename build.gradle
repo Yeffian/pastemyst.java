@@ -21,6 +21,26 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.7'
 }
 
+// To specify a license in the pom:
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            licenses {
+                license {
+                    name 'The MIT License'
+                    url 'https://opensource.org/licenses/MIT'
+                    distribution 'repo'
+                }
+            }
+        }
+    }
+}
+
+wrapper {
+    gradleVersion = "6.7"
+    distributionType = Wrapper.DistributionType.ALL
+}
+
 test {
     useJUnitPlatform()
 }
