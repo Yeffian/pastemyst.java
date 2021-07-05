@@ -70,6 +70,7 @@ public class PasteEndpoint {
      * Create a new paste with a {@code Paste} object.
      *
      * @param paste The paste to create.
+     * @return The {@code String} containing the id of the new paste.
      **/
     public String createPaste(@NonNull Paste paste, @NonNull String token) throws IOException, InterruptedException {
         Gson gson = new Gson();
@@ -78,10 +79,35 @@ public class PasteEndpoint {
         return obj.get("_id").toString();
     }
 
-    public void editPaste(String id, Paste edit, String token) throws IOException, InterruptedException {
+    /**
+     * Edits a existing paste.
+     *
+     * @param id The id of the paste to edit.
+     * @param edit The edit object, containing all the edit data for the paste.
+     * @param token The authorization token.
+     **/
+    public void editPaste(String id, PasteEdit edit, String token) throws IOException, InterruptedException {
+        String editPasteEndpoint = String.format("/%s", id);
 
+        Paste p = this.getPaste(id);
+
+        if (!edit.getTitle().isEmpty()) p.setTitle(edit.getTitle());
+        if (!edit.getTags().isEmpty()) p.setTags(edit.getTags());
+        if (!edit.getPasties().isEmpty()) p.setPasties(edit.getPasties());
+
+        Gson gson = new GsonBuilder()
+                .serializeNulls()
+                .create();
+
+        JSONObject obj = new JSONObject(client.patch(ENDPOINT + editPasteEndpoint, gson.toJson(edit), token));
     }
 
+    /**
+     * Deletes a paste from pastemyst.
+     *
+     * @param id The id of the paste to delete.
+     * @param token The authorization token.
+     **/
     public void deletePaste(String id, String token) throws IOException, InterruptedException {
         String deletePasteEndpoint = String.format("/%s", id);
 
