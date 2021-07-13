@@ -1,17 +1,17 @@
 <div align="center">
   
-  # Pastemyst.java
+# Pastemyst.java
 </div>
 
 ## What is pastemyst.java?
 **pastemyst.java** is a [pastemyst][pastemyst-link] API Wrapper, written in Java. The library is in early development, and all contributions are welcome.
 
-Check out Pastemyst here: [paste.myst.rs][pastemyst-link]
+Check out pastemyst here: [paste.myst.rs][pastemyst-link]
+
 
 # Examples
 
 ## Get the language by name and extension
-
 ```java
 import io.github.yeffycodegit.pastemystjava.lib.Pastemyst;
 import io.github.yeffycodegit.pastemystjava.types.Language;
@@ -19,7 +19,7 @@ import io.github.yeffycodegit.pastemystjava.types.Language;
 import java.io.IOException;
 
 public class Main {
-  public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Pastemyst pastemyst = new Pastemyst();
 
         Language langByName = pastemyst.data.getLangByName("Python");
@@ -29,12 +29,11 @@ public class Main {
 ```
 
 ## Get when the paste should expire
-
 ```java
 import io.github.yeffycodegit.pastemystjava.lib.Pastemyst;
 
 public class Main {
-public static void main(String[] args) {
+    public static void main(String[] args) {
         Pastemyst pastemyst = new Pastemyst();
 
         System.out.println(pastemyst.time.whenPasteShouldExpire("1588441258", "1w"));
@@ -43,7 +42,6 @@ public static void main(String[] args) {
 ```
 
 ## Get a user on pastemyst/if a user exists on pastemyst
-
 ```java
 import io.github.yeffycodegit.pastemystjava.lib.Pastemyst;
 import io.github.yeffycodegit.pastemystjava.types.User;
@@ -59,5 +57,6 @@ public class Main {
     }
 }
 ```
+
 
 [pastemyst-link]: https://github.com/codemyst/pastemyst "pastemyst on Github"
