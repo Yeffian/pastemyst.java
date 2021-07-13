@@ -9,9 +9,9 @@
 Check out pastemyst here: [paste.myst.rs][pastemyst-link]
 
 
-# Examples
+## Examples
 
-## Get the language by name and extension
+### Get the language by name and extension
 ```java
 import io.github.yeffycodegit.pastemystjava.lib.Pastemyst;
 import io.github.yeffycodegit.pastemystjava.types.Language;
@@ -28,7 +28,7 @@ public class Main {
 }
 ```
 
-## Get when the paste should expire
+### Get when the paste should expire
 ```java
 import io.github.yeffycodegit.pastemystjava.lib.Pastemyst;
 
@@ -41,7 +41,7 @@ public class Main {
 }
 ```
 
-## Get a user on pastemyst/if a user exists on pastemyst
+### Get a user on pastemyst/if a user exists on pastemyst
 ```java
 import io.github.yeffycodegit.pastemystjava.lib.Pastemyst;
 import io.github.yeffycodegit.pastemystjava.types.User;
