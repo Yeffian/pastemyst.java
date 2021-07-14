@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'maven-publish'
+    id 'maven'
 }
 
 group 'io.github.yeffycodegit'
@@ -21,49 +21,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.7'
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'io.github.yeffycodegit'
-            artifactId = 'library'
-            version = '1.1'
-
-            from components.java
-        }
-    }
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            pom {
-                name = 'pastemyst.java' as Publication
-                description = 'A Java API Wrapper for the Pastemyst V2 API' as Publication
-                url = 'https://github.com/YeffyCodeGit/pastemyst.java'
-
-                licenses {
-                    license {
-                        name = 'MIT License'
-                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id = 'johnd'
-                        name = 'John Doe'
-                        email = 'john.doe@example.com'
-                    }
-                }
-                scm {
-                    connection = 'scm:git:git://example.com/my-library.git'
-                    developerConnection = 'scm:git:ssh://example.com/my-library.git'
-                    url = 'http://example.com/my-library/'
-                }
-            }
-        }
-    }
-}
 
 test {
     useJUnitPlatform()

@@ -1,7 +1,6 @@
 .gradle/
 .idea/
 .build/
-gradle/
 src/test/resources/config.json
 src/main/java/io/github/yeffycodegit/pastemystjava/sandbox
 build
