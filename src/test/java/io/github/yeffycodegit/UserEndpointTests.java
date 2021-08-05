@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 @DisplayName("Tests for the user endpoint")
 public class UserEndpointTests {
@@ -22,7 +23,7 @@ public class UserEndpointTests {
 
     @Test
     @DisplayName("Get a user from pastemyst")
-    public void getUserTest() throws IOException, InterruptedException {
+    public void getUserTest() throws IOException, InterruptedException, ExecutionException {
         User codemyst = user.getUser("CodeMyst");
 
         assertEquals("CodeMyst", codemyst.getUsername());

@@ -31,6 +31,7 @@ public class UserEndpoint {
      *
      * @throws IOException
      * @throws InterruptedException
+     * @throws ExecutionException
      *
      * @apiNote If the user account is private, this function will not find the user. But if you have the user's token, refer to {@code getUserByToken}.
      * @param username The user to check for.
@@ -51,6 +52,7 @@ public class UserEndpoint {
      *
      * @throws IOException
      * @throws InterruptedException
+     * @throws ExecutionException
      * @param username The user to get.
      *
      * @apiNote If the user account is private, this function will not find the user. But if you have the user's token, refer to {@code getUserByToken}.

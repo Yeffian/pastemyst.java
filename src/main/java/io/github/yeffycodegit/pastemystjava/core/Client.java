@@ -33,6 +33,7 @@ public class Client {
     * @throws IOException
     * @throws InterruptedException
     * @throws ExecutionException
+    *
     **/
     public String get(@NonNull String endpoint) throws IOException, InterruptedException, ExecutionException {
         HttpRequest request = HttpRequest.newBuilder()
@@ -40,6 +41,8 @@ public class Client {
                 .build();
 
         CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
+
+        status = response.get().statusCode();
 
         return response.get().body();
     }
@@ -61,6 +64,8 @@ public class Client {
                 .build();
 
         CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
+
+        status = response.get().statusCode();
 
         return response.get().body();
     }
