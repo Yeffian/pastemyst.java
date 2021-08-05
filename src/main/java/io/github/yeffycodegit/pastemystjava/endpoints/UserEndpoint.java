@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Represents the User endpoint on pastemyst. Used for getting data related to users on pastemyst.
@@ -35,7 +36,7 @@ public class UserEndpoint {
      * @param username The user to check for.
      * @return {@code boolean} If the user exists or not.
      **/
-    public boolean getIfUserExists(@NonNull String username) throws IOException, InterruptedException {
+    public boolean getIfUserExists(@NonNull String username) throws IOException, InterruptedException, ExecutionException {
         String ifUserExistsEndpoint = String.format("/%s/exists", username);
 
         client.get(ENDPOINT + ifUserExistsEndpoint);
@@ -54,7 +55,7 @@ public class UserEndpoint {
      *
      * @apiNote If the user account is private, this function will not find the user. But if you have the user's token, refer to {@code getUserByToken}.
      **/
-    public User getUser(@NonNull String username) throws IOException, InterruptedException {
+    public User getUser(@NonNull String username) throws IOException, InterruptedException, ExecutionException {
         User user = new User();
 
         String getUserEndpoint = String.format("/%s", username);
@@ -80,7 +81,7 @@ public class UserEndpoint {
      * @throws InterruptedException
      * @return The {@code String[]} which contains all the paste id's.
      **/
-    public String[] getUserPasteIds(@NonNull String token) throws IOException, InterruptedException {
+    public String[] getUserPasteIds(@NonNull String token) throws IOException, InterruptedException, ExecutionException {
        String getUserPastesEndpoint = "/self/pastes";
 
        List<String> ids = new ArrayList<String>();
@@ -110,7 +111,7 @@ public class UserEndpoint {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public AuthorizedUser getUserByToken(@NonNull String token) throws IOException, InterruptedException {
+    public AuthorizedUser getUserByToken(@NonNull String token) throws IOException, InterruptedException, ExecutionException {
         AuthorizedUser user = new AuthorizedUser();
 
         String getUserEndpoint = String.format("/self");

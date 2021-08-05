@@ -7,6 +7,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Implements functionality for performing different requests on the API, and is used by the rest of the library to implement its functionality.
@@ -30,17 +32,16 @@ public class Client {
     * @return {@code String} containing the result of the performed request.
     * @throws IOException
     * @throws InterruptedException
+    * @throws ExecutionException
     **/
-    public String get(@NonNull String endpoint) throws IOException, InterruptedException {
+    public String get(@NonNull String endpoint) throws IOException, InterruptedException, ExecutionException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .build();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
 
-        status = response.statusCode();
-
-        return response.body();
+        return response.get().body();
     }
 
     /**
@@ -51,18 +52,17 @@ public class Client {
      * @return {@code String} containing the result of the performed request.
      * @throws IOException
      * @throws InterruptedException
+     * @throws ExecutionException
      **/
-    public String get(@NonNull String endpoint, @NonNull String authToken) throws IOException, InterruptedException {
+    public String get(@NonNull String endpoint, @NonNull String authToken) throws IOException, InterruptedException, ExecutionException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .setHeader("Authorization", authToken)
                 .build();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
 
-        status = response.statusCode();
-
-        return response.body();
+        return response.get().body();
     }
 
     /**
@@ -72,17 +72,18 @@ public class Client {
      * @param body The data to post to the endpoint.
      * @throws IOException
      * @throws InterruptedException
+     * @throws ExecutionException
      * @return {@code String} the response from the post request.
      **/
-    public String post(@NonNull String endpoint, @NonNull String body) throws InterruptedException, IOException {
+    public String post(@NonNull String endpoint, @NonNull String body) throws InterruptedException, IOException, ExecutionException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .POST(HttpRequest.BodyPublishers.ofString(body))
                 .build();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
 
-        return response.body();
+        return response.get().body();
     }
 
     /**
@@ -93,9 +94,10 @@ public class Client {
      * @param authToken The token to add on the Authorization header.
      * @throws IOException
      * @throws InterruptedException
+     * @throws ExecutionException
      * @return {@code String} the response from the post request.
      **/
-    public String post(@NonNull String endpoint, @NonNull String body, @NonNull String authToken) throws InterruptedException, IOException {
+    public String post(@NonNull String endpoint, @NonNull String body, @NonNull String authToken) throws InterruptedException, IOException, ExecutionException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .setHeader("Content-Type", "application/json")
@@ -103,9 +105,9 @@ public class Client {
                 .POST(HttpRequest.BodyPublishers.ofString(body))
                 .build();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
 
-        return response.body();
+        return response.get().body();
     }
 
     /**
@@ -114,6 +116,7 @@ public class Client {
      * @param endpoint The endpoint to send the request to.
      * @throws IOException
      * @throws InterruptedException
+     * @throws ExecutionException
      **/
     public void delete(@NonNull String endpoint) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
@@ -121,7 +124,7 @@ public class Client {
                 .DELETE()
                 .build();
 
-        client.send(request, HttpResponse.BodyHandlers.ofString());
+        client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
     }
 
     /**
@@ -131,6 +134,7 @@ public class Client {
      * @param authToken The token to add on the Authorization header.
      * @throws IOException
      * @throws InterruptedException
+     * @throws ExecutionException
      **/
     public void delete(@NonNull String endpoint, @NonNull String authToken) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
@@ -139,7 +143,7 @@ public class Client {
                 .DELETE()
                 .build();
 
-        client.send(request, HttpResponse.BodyHandlers.ofString());
+        client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
     }
 
     /**
@@ -149,17 +153,18 @@ public class Client {
      * @param data The data to send.
      * @throws IOException
      * @throws InterruptedException
+     * @throws ExecutionException
      **/
-    public String patch(@NonNull String endpoint, @NonNull String data) throws IOException, InterruptedException {
+    public String patch(@NonNull String endpoint, @NonNull String data) throws IOException, InterruptedException, ExecutionException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .method("PATCH", HttpRequest.BodyPublishers.ofString(data))
                 .header("Content-Type", "application/json")
                 .build();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
 
-        return response.body();
+        return response.get().body();
     }
 
     /**
@@ -170,8 +175,9 @@ public class Client {
      * @param authToken The token to add on the Authorization header.
      * @throws IOException
      * @throws InterruptedException
+     * @throws ExecutionException
      **/
-    public String patch(@NonNull String endpoint, @NonNull String data, @NonNull String authToken) throws IOException, InterruptedException {
+    public String patch(@NonNull String endpoint, @NonNull String data, @NonNull String authToken) throws IOException, InterruptedException, ExecutionException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .method("PATCH", HttpRequest.BodyPublishers.ofString(data))
@@ -179,8 +185,8 @@ public class Client {
                 .header("Content-Type", "application/json")
                 .build();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
 
-        return response.body();
+        return response.get().body();
     }
 }

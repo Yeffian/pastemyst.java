@@ -12,6 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 @DisplayName("Tests for the Data endpoint")
 public class DataEndpointTests {
@@ -24,7 +25,7 @@ public class DataEndpointTests {
 
     @Test
     @DisplayName("get a language by its name")
-    public void getLangByNameTest() throws IOException, InterruptedException {
+    public void getLangByNameTest() throws IOException, InterruptedException, ExecutionException {
         String[] mimes = new String[]{"text/x-python"};
         String[] extensions = new String[]{"BUILD", "bzl", "py", "pyw"};
         Language lang = data.getLangByName("Python");
@@ -43,7 +44,7 @@ public class DataEndpointTests {
 
     @Test
     @DisplayName("get a language by its extension")
-    public void getLangByExtensionTest() throws IOException, InterruptedException {
+    public void getLangByExtensionTest() throws IOException, InterruptedException, ExecutionException {
         String[] mimes = new String[]{"text/x-python"};
         String[] extensions = new String[]{"BUILD", "bzl", "py", "pyw"};
         Language lang = data.getLangByExtension("py");

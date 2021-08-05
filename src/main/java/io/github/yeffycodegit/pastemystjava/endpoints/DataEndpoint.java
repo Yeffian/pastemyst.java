@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Represents the Data endpoint on pastemyst. Used for getting various simple data.
@@ -29,7 +30,7 @@ public class DataEndpoint {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public Language getLangByName(@NonNull String lang) throws IOException, InterruptedException {
+    public Language getLangByName(@NonNull String lang) throws IOException, InterruptedException, ExecutionException {
         String langByNameEndpoint = String.format("/language?name=%s", lang);
 
         JSONObject obj = new JSONObject(client.get(ENDPOINT + langByNameEndpoint));
@@ -45,7 +46,7 @@ public class DataEndpoint {
      * @throws IOException
      * @throws InterruptedException
      **/
-    public Language getLangByExtension(@NonNull String extension) throws IOException, InterruptedException {
+    public Language getLangByExtension(@NonNull String extension) throws IOException, InterruptedException, ExecutionException {
         String langByExtensionEndpoint = String.format("/languageExt?extension=%s", extension);
 
         JSONObject obj = new JSONObject(client.get(ENDPOINT + langByExtensionEndpoint));

@@ -15,6 +15,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 
 /**
@@ -32,7 +33,7 @@ public class PasteEndpoint {
      * @param id The id of the paste.
      * @return {@code Paste} the returned paste object.
      **/
-    public Paste getPaste(@NonNull String id) throws IOException, InterruptedException {
+    public Paste getPaste(@NonNull String id) throws IOException, InterruptedException, ExecutionException {
         String getPasteEndpoint = String.format("/%s", id);
 
         Paste paste = new Paste();
@@ -72,7 +73,7 @@ public class PasteEndpoint {
      * @param paste The paste to create.
      * @return The {@code String} containing the id of the new paste.
      **/
-    public String createPaste(@NonNull Paste paste, @NonNull String token) throws IOException, InterruptedException {
+    public String createPaste(@NonNull Paste paste, @NonNull String token) throws IOException, InterruptedException, ExecutionException {
         Gson gson = new Gson();
         
         JSONObject obj = new JSONObject(client.post(ENDPOINT, gson.toJson(paste), token));
@@ -86,7 +87,7 @@ public class PasteEndpoint {
      * @param edit The edit object, containing all the edit data for the paste.
      * @param token The authorization token.
      **/
-    public void editPaste(String id, PasteEdit edit, String token) throws IOException, InterruptedException {
+    public void editPaste(String id, PasteEdit edit, String token) throws IOException, InterruptedException, ExecutionException {
         String editPasteEndpoint = String.format("/%s", id);
 
         Paste p = this.getPaste(id);
